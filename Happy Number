@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool isHappy(int num) {
+    int temp=num;
+	for(int i=0;i<20;i++)
+	{
+		temp=digit_square_sum(temp);
+		if(temp==1)return true;
+	}
+	return false;
+    }
+    int digit_square_sum(int num)
+    {
+	    int		residue;
+	    int		sum=0;
+	    while(num>=1)
+    	{
+		    residue=num%10;
+	    	sum+=residue*residue;
+		    num/=10;
+    	}
+    	return sum;
+    }
+
+};
