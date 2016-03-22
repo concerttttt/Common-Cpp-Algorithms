@@ -1,0 +1,22 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    void deleteNode(ListNode* node) {
+        if(node == NULL)return;
+        //ListNode* temp;
+        //temp = node->next;
+        node->val = node->next->val;
+        node->next = node->next->next;
+        //delete(temp);
+    }
+};
+
+//It's okay to use a temp node and delete it later, however this will make this function slow.
+//So we just skip this step and the function should work fine.
