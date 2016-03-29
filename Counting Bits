@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<int> countBits(int num) {
+        vector<int>     count;
+        count.push_back(0);
+        while(count.size() <= (num + 1))
+        {
+            int size = count.size();
+            for(int i = 0;i < size ; i++)
+            {
+                count.push_back(count[i]+1);
+            }
+        }
+        while(count.size() > num+1)
+            count.pop_back();
+        return count;
+    }
+};
