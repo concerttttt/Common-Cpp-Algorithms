@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int     size = prices.size();
+        if(size < 2)return 0;
+        int     minValue,maxValue;
+        minValue = prices[0];
+        maxValue = 0;
+        for(int i = 1;i < size;i++)
+        {
+            minValue = std::min(minValue,prices[i]);
+            maxValue = std::max(maxValue,prices[i] - minValue);
+        }
+        return maxValue;
+    }
+};
