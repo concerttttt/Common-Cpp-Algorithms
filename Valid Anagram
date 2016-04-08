@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        vector<int>     ss(26,0);
+        vector<int>     tt(26,0);
+        if(s.length() != t.length())
+            return false;
+        int size = s.length();
+        for(int i = 0; i < size;i++)
+        {
+            ss[int(s[i]) - 97] += 1;
+            tt[int(t[i]) - 97] += 1;
+        }
+        if(ss == tt)
+            return true;
+        else
+            return false;
+    }
+};
