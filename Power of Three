@@ -1,0 +1,24 @@
+The first solution.
+class Solution {
+public:
+    bool isPowerOfThree(int n) {
+        double result = log(n)/log(3);
+        int check = result + 0.5;
+        if(abs(check - result )<1e-10 )
+            return true;
+        return false;
+    }
+};
+
+//The second solution.
+class Solution {
+public:
+    bool isPowerOfThree(int n) {
+        for(long int i=1;i<=n;i*=3)
+        {
+            if(i == n)
+                return true;
+        }
+        return false;
+      }
+  };
