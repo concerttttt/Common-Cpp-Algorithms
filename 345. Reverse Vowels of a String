@@ -1,0 +1,17 @@
+class Solution {
+public:
+    string reverseVowels(string s) {
+        int i = 0;
+        int j = s.size()-1;
+        int dict[256] = {0};
+        dict['a']=dict['e']=dict['i']=dict['o']=dict['u']=dict['A']=dict['E']=dict['I']=dict['O']=dict['U']=1;
+        while(i<j)
+        {
+            while(i<j&&dict[s[i]]==0)i++;
+            while(i<j&&dict[s[j]]==0)j--;
+            swap(s[i],s[j]);
+            i++,j--;
+        }
+        return s;
+    }
+};
