@@ -1,0 +1,16 @@
+
+class Solution {
+public:
+    string convertToTitle(int n) {
+        string  result ="";
+        while(n > 0)
+        {
+            int x = (n-1) % 26;
+            char temp = 'A' + x;
+            result = result + temp;
+            n = (n-1)/26;
+        }
+        reverse(result.begin(),result.end());
+        return result;
+    }
+};
