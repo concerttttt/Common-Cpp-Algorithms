@@ -1,0 +1,16 @@
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        unordered_set<int>  ss(nums1.begin(),nums1.end());
+        vector<int>     result;
+        for(auto a:nums2)
+            if(ss.count(a))
+            {
+                result.push_back(a);
+                ss.erase(a);
+            }
+        return result;
+    }
+};
+
+//Unordered_set() is faster than set()--(ordered), the computational complexity will reduce from nlogn to constant n;
