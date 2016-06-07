@@ -1,3 +1,7 @@
 # Leetcode-Solutions
-These are my solutions to some of the questions on leetcode.
-If you feel these code might help you, feel free to copy my codes.
+Questions with serial No are from leetcode:https://leetcode.com/problemset/algorithms
+
+# Common Algorithms
+Questions without serial No are from <<The Classic Algorithm Fundamental of Program Language C/C++>>--Qin Jiaohua
+
+
