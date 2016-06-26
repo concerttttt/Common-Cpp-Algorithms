@@ -1,0 +1,20 @@
+class Solution {
+public:
+    string getHint(string secret, string guess) {
+        int countA = 0,countB = 0;
+        vector<int>     tbSecret(10,0),tbGuess(10,0);
+        for(int i=0;i<secret.size();i++)
+        {
+            if(secret[i] == guess[i])
+                countA++;
+            else
+            {
+                tbSecret[secret[i]-'0']++;
+                tbGuess[guess[i]-'0']++;
+            }
+        }
+        for(int i=0;i<10;i++)
+            countB += min(tbSecret[i],tbGuess[i]);
+        return to_string(countA)+'A'+to_string(countB)+'B';
+    }
+};
