@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
+        int recArea = (H-F)*(G-E)+(D-B)*(C-A);
+        int hor[4] = {A,C,E,G};
+        int ver[4] = {B,D,F,H};
+        sort(hor,hor+4);
+        sort(ver,ver+4);
+        if(E>=C||G<=A||H<=B||F>=D)
+        {
+            return recArea;
+        }
+        else
+        {
+            recArea -= (hor[2]-hor[1])*(ver[2]-ver[1]);
+            return recArea;
+        }
+    }
+};
