@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool wordPattern(string pattern, string str) {
+        istringstream strIn(str);
+        vector<string>      stringVector;
+        string  word;
+        while(strIn >> word)    stringVector.push_back(word);
+        if(stringVector.size() != pattern.size())   return false;
+        unordered_map<string,char>      stringChar;
+        unordered_map<char,string>      charString;
+        for(int i=0;i<pattern.size();i++)
+        {
+            if(stringChar[stringVector[i]] == 0 && charString[pattern[i]] == "")
+            {
+                stringChar[stringVector[i]] = pattern[i];
+                charString[pattern[i]] = stringVector[i];
+                continue;
+            }
+            if(stringChar[stringVector[i]] != pattern[i])  return false;
+        }
+        return true;
+    }
+};
