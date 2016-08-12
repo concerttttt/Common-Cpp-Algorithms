@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int reverse(int x) {
+        if(x == 0)  return 0;
+        
+        int signBit;
+        if(x < 0)   signBit = -1;
+        else    signBit = 1;
+        
+        string str = to_string(abs(x));
+        std::reverse(str.begin(),str.end());
+        long long temp = stoll(str);
+        if(temp > INT_MAX)   return 0;
+        int res = ((int)temp) * signBit;
+        return res;
+    }
+};
