@@ -1,0 +1,99 @@
+//Solution one
+class Solution {
+public:
+    string addBinary(string a, string b) {
+        string res = "";
+        int mid = 0;
+        int i = a.size()-1;
+        int j = b.size()-1;
+        char carry = '0';
+        while(i >=0 && j>=0)
+        {
+            mid = a[i] + b[j] + carry;
+            switch(mid)
+            {
+                case 144:    
+                {
+                    res += '0';
+                    carry = '0';
+                    break;
+                }
+                case 145:
+                {
+                    res += '1';
+                    carry = '0';
+                    break;
+                }
+                case 146:
+                {
+                    res += '0';
+                    carry = '1';
+                    break;
+                }
+                case 147:
+                {
+                    res += '1';
+                    carry = '1';
+                    break;
+                }
+                default:
+                    break;
+            }
+            i--;
+            j--;
+        }
+        
+        while(i >= 0)
+        {
+            mid = a[i] + carry;
+            switch(mid)
+            {
+                case 96:
+                    res += '0';
+                    carry = '0';
+                    break;
+                case 97:
+                    res += '1';
+                    carry = '0';
+                    break;
+                case 98:
+                    res += '0';
+                    carry = '1';
+                    break;
+                default:
+                    break;
+            }
+            i--;
+        }
+        
+        while(j >= 0)
+        {
+            mid = b[j] + carry;
+            switch(mid)
+            {
+                case 96:
+                    res += '0';
+                    carry = '0';
+                    break;
+                case 97:
+                    res += '1';
+                    carry = '0';
+                    break;
+                case 98:
+                    res += '0';
+                    carry = '1';
+                    break;
+                default:
+                    break;
+            }
+            j--;
+        }
+        
+        if(carry == '1')
+            res += '1';
+        
+        std::reverse(res.begin(),res.end());
+        return res;
+    }
+};
+//Solution two
