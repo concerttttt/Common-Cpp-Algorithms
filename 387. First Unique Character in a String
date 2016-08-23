@@ -1,0 +1,18 @@
+//First Solution
+//Brute force
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        int index = 0;
+        unordered_map<char,int>     hsh;
+        for(char n:s)
+            hsh[n]++;
+        for(int i = 0;i<s.size();i++)
+            if(hsh[s[i]] == 1)
+                return i;
+        return -1;
+    }
+};
+
+//Second solution
+//To be continued...
