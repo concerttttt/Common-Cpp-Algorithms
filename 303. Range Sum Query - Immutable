@@ -1,0 +1,20 @@
+//Solution one
+class NumArray {
+public:
+    NumArray(vector<int> &nums) {
+        for(int n:nums)
+            a.push_back(a.back()+n);
+    }
+
+    int sumRange(int i, int j) {
+        return (a[j+1]-a[i]);
+    }
+private:
+    vector<int>     a = {0};
+};
+
+
+// Your NumArray object will be instantiated and called as such:
+// NumArray numArray(nums);
+// numArray.sumRange(0, 1);
+// numArray.sumRange(1, 2);
