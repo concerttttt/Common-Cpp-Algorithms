@@ -1,0 +1,27 @@
+//Solution one
+class Solution {
+public:
+    char findTheDifference(string s, string t) {
+        std::sort(s.begin(),s.end());
+        std::sort(t.begin(),t.end());
+        
+        for(int i = 0; i < s.size();i++)
+            if(t[i] != s[i])
+                return t[i];
+                
+        return t[t.size() - 1];
+    }
+};
+
+//Solution 2
+class Solution
+{
+  public:
+    char findTheDifference(string s,string t)
+    {
+      char ch = 0;
+      for(char ss : s)  ch ^= ss;
+      for(char tt : t)  ch ^= tt;
+      return ch;
+    }
+}
