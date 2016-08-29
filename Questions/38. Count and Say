@@ -1,0 +1,48 @@
+//Solution 1
+class Solution {
+public:
+    string countChar(string str)
+    {
+        if(str.empty())     return "";
+        vector<int>         number;
+        vector<char>        chract;
+        char ch = str[0];
+        int count = 0;
+        
+        for(int i = 0;i < str.size();i++)
+        {
+            if(str[i] != ch)
+            {
+                chract.push_back(ch);
+                ch = str[i];
+                number.push_back(count);
+                count = 0;
+            }
+            count++;
+        }
+        
+        chract.push_back(ch);
+        number.push_back(count);
+        
+        string res = "";
+        
+        for(int i = 0;i < chract.size();i++)
+        {
+            res += to_string(number[i]);
+            
+            res += chract[i];
+        }
+        
+        return res;
+    }
+    string countAndSay(int n) {
+        if(n == 0)  return "";
+        if(n == 1)  return "1";
+        string s = "1";
+        for(int i = 0;i < n - 1;i++)
+            s = countChar(s);
+        return s;
+    }
+};
+
+//Solution 2
