@@ -1,0 +1,74 @@
+//Solution 1
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+
+    Solution(ListNode* head) {
+        hd = head;
+    }
+    
+    int getRandom() {
+        ListNode* tmp = hd;
+        int rd = 1;
+        int res = tmp->val;
+        
+        while(tmp)
+        {
+            if(rand()%rd == 0)
+                res = tmp->val;
+            tmp = tmp->next;
+            rd++;
+        }
+        
+        return res;
+    }
+    
+private:
+    ListNode* hd;
+};
+
+/**
+ * Your Solution object will be instantiated and called as such:
+ * Solution obj = new Solution(head);
+ * int param_1 = obj.getRandom();
+ */
+ 
+ 
+ //Solution 2
+ class Solution
+ {
+    private:
+      ListNode* hd;
+      std::default_ramdom_engine  generator;
+    public:
+      Solution(ListNode* head)
+      {
+        hd = head;
+      }
+      
+      int getRandom()
+      {
+        ListNode *tmp = hd;
+        int rd = 1;
+        int res = tmp->val;
+        
+        while(tmp)
+        {
+          std::uniform_int_distribution<int>    distribution(0,rd);
+          if(distrbution(generator) == 0)
+            res = tmp->val;
+          tmp = tmp->next;
+          rd++;
+        }
+        
+        return res;
+      }
+ }
+ 
