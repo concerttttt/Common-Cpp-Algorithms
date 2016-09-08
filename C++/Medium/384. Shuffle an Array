@@ -1,0 +1,34 @@
+class Solution {
+    private:
+    vector<int>     res;
+    vector<int>     backup;
+public:
+    Solution(vector<int> nums) {
+        res = nums;
+        backup = nums;
+        srand(time(NULL));
+    }
+    
+    /** Resets the array to its original configuration and return it. */
+    vector<int> reset() {
+        return res = backup;
+    }
+    
+    /** Returns a random shuffling of the array. */
+    vector<int> shuffle() {
+        int n = res.size();
+        while(n)
+        {
+            int j = rand() % n;
+            swap(res[j],res[--n]);
+        }
+        return res;
+    }
+};
+
+/**
+ * Your Solution object will be instantiated and called as such:
+ * Solution obj = new Solution(nums);
+ * vector<int> param_1 = obj.reset();
+ * vector<int> param_2 = obj.shuffle();
+ */
