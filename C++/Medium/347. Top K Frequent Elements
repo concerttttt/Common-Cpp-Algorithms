@@ -1,0 +1,29 @@
+bool compare(std::pair<int,int>&a,std::pair<int,int>&b) // this function cannot defined within class solution, or it will be a non-static function to sort
+{
+	return a.second > b.second;
+}
+
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+
+		unordered_map<int,int>		ht;
+		
+		for(int n : nums)
+			ht[n]++;
+		
+		vector<std::pair<int,int>>	log;
+		
+		for(auto iter = ht.begin();iter != ht.end();iter++)
+			log.push_back(make_pair(iter->first,iter->second));
+		
+		std::sort(log.begin(),log.end(),compare);
+		
+		vector<int>		ans;
+		
+		for(int i =0;i < k;i++)
+			ans.push_back(log[i].first);
+		
+		return ans;
+    }
+};
