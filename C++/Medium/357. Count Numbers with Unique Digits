@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int countNumbersWithUniqueDigits(int n) {
+        int sum = 0;
+        
+        for(int i = n;i >= 1;i--)
+        {
+            int prod = 9;
+            for(int j = 0;j < i-1;j++)
+                prod *= 9-j;
+            sum += prod;
+        }
+        
+        return sum + 1;
+    }
+};
