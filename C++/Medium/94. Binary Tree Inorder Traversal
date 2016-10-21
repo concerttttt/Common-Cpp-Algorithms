@@ -1,0 +1,73 @@
+//solution 1
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int>     result;
+        if(!root)   
+            return result;
+            
+        stack<TreeNode*>    toVisit;
+        unordered_map<TreeNode*,bool>   visitLog;
+        toVisit.push(root);
+        
+        TreeNode*   pNode = nullptr;
+        
+        while(!toVisit.empty())
+        {
+            pNode = toVisit.top();
+            if(pNode->left && !visitLog[pNode])
+            {
+                toVisit.push(pNode->left);
+                visitLog[pNode] = true;
+            }
+            else
+            {
+                result.push_back(pNode->val);
+                toVisit.pop();
+                if(pNode->right)
+                    toVisit.push(pNode->right);
+            }
+        }
+        
+        return result;
+        
+    }
+};
+
+//Solution 2
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    void inOrder(TreeNode* root,vector<int>& result)
+    {
+        if(!root)   return;
+        inOrder(root->left,result);
+        result.push_back(root->val);
+        inOrder(root->right,result);
+    }
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int>     result;
+        
+        inOrder(root,result);
+        return result;
+    }
+};
