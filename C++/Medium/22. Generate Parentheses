@@ -1,0 +1,49 @@
+//solution 1
+
+class Solution {
+public:
+    void generates(vector<string>& res,string str,int left,int right)
+    {
+        if(left == 0 && right == 0) res.emplace_back(str);
+        if(left > 0)    generates(res,str+'(',left-1,right);
+        if(right > 0 && right > left)   generates(res,str+')',left,right-1);
+    }
+    vector<string> generateParenthesis(int n) {
+        vector<string> res;
+        string str = "";
+        generates(res,str,n,n);
+        return res;
+    }
+};
+
+
+//solution 2
+
+class Solution {
+public:
+    void generates(vector<string>& res,string &str,int left,int right)
+    {
+        if(left == 0 && right == 0) 
+            res.emplace_back(str);
+            
+        if(left > 0)
+        {
+            str.push_back('(');
+            generates(res,str,left-1,right);
+            str.pop_back();
+        }
+        if(right > 0 && right > left)
+        {
+            str.push_back(')');
+            generates(res,str,left,right-1);
+            str.pop_back();
+        }
+        
+    }
+    vector<string> generateParenthesis(int n) {
+        vector<string> res;
+        string str = "";
+        generates(res,str,n,n);
+        return res;
+    }
+};
