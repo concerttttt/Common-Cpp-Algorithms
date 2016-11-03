@@ -1,0 +1,34 @@
+//solution 1
+
+class Solution {
+public:
+    void computes(vector<vector<int>>&res,vector<int>&output,vector<int>&visited,vector<int>&nums)
+    {
+        if(output.size() == nums.size())
+        {
+            res.push_back(output);
+            return;
+        }
+        
+        for(int i = 0;i < nums.size();i++)
+        {
+            if(!visited[i])
+            {
+                output.push_back(nums[i]);
+                visited[i] = 1;
+                computes(res,output,visited,nums);
+                output.pop_back();
+                visited[i] = 0;
+            }
+        }
+    }
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>>     res;
+        vector<int>     output;
+        vector<int>     visited(nums.size(),0);
+        computes(res,output,visited,nums);
+        return res;
+    }
+};
+
+//solution 2
