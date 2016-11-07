@@ -1,0 +1,14 @@
+
+//catalan number
+
+class Solution {
+public:
+    int numTrees(int n) {
+        vector<int>     c(n+1,0);
+        c[0] = 1;
+        for(int i = 1; i <= n;i++)
+            for(int j = 0;j <= i-1;j++)
+                c[i] += c[j]*c[i-1-j];
+        return c[n];
+    }
+};
