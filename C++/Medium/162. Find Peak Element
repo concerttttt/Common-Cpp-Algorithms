@@ -14,3 +14,17 @@ public:
         return right;
     }
 };
+
+class Solution {
+public:
+    int findPeakElement(vector<int>& nums) {
+        int i = 1,n = nums.size();
+        while(i < n)
+        {
+            if(nums[i] < nums[i-1])
+                return i-1;
+            i++;
+        }
+        return n-1;
+    }
+};
