@@ -1,3 +1,4 @@
+//solution 1
 class Solution {
 public:
     void combinationSearch(string digits, string dict[],int level, string out,vector<string> &res)
@@ -24,3 +25,23 @@ public:
     }
 };
 
+//solution 2
+class Solution {
+public:
+    vector<string> letterCombinations(string digits) {
+        vector<string>  result;
+        if(digits.empty())  return result;
+        string dict[] = {"abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+        result.push_back("");
+        for(int i = 0;i < digits.size();i++)
+        {
+            string const& str = dict[digits[i]-'2'];
+            vector<string>  tmp;
+            for(int j = 0;j < str.size();j++)
+                for(int k = 0;k < result.size();k++)
+                    tmp.emplace_back(result[k]+str[j]);
+            result.swap(tmp);
+        }
+        return result;
+    }
+};
