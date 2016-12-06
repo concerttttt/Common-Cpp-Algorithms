@@ -1,3 +1,5 @@
+//solution 1
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -42,5 +44,44 @@ public:
             n = k;
         }
         return lists[0];
+    }
+};
+
+//solution 2
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+
+
+class Solution {
+    struct compare
+    {
+        bool operator()(ListNode* l1,ListNode* l2)
+        {
+            return l1->val > l2->val;
+        }
+    };
+    
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        priority_queue<ListNode*,vector<ListNode*>,compare> heap;
+        for(int i = 0;i < lists.size();i++)
+            if(lists[i])
+                heap.push(lists[i]);
+        ListNode head(0);
+        ListNode *curr = &head;
+        while(!heap.empty())
+        {
+            curr->next = heap.top();
+            heap.pop();
+            curr = curr->next;
+            if(curr->next) heap.push(curr->next);
+        }
+        return head.next;
     }
 };
