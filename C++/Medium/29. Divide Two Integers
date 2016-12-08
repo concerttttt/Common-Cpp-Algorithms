@@ -1,3 +1,5 @@
+//solution 1
+
 class Solution {
 public:
     int divide(int dividend, int divisor) {
@@ -6,5 +8,28 @@ public:
         a = a / b;
         if(a < INT_MIN || a > INT_MAX)  return INT_MAX;
         return a;
+    }
+};
+//solution 2
+
+class Solution {
+public:
+    int divide(int dividend, int divisor) {
+        if(divisor == 0 || dividend == INT_MIN && divisor == -1)    return INT_MAX;
+        if(dividend == 0)   return 0;
+        int sign = (dividend > 0 ^ divisor >0);
+        long long a = labs(dividend);
+        long long b = labs(divisor);
+        long count = 0;
+        for(int i = 31;i >= 0;i--)
+        {
+            while(a >= b << i)
+            {
+                a -= b << i;
+                count += 1 << i;
+            }
+        }
+        if(sign)    return -count;
+        else return count;
     }
 };
