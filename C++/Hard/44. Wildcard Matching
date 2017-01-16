@@ -1,0 +1,29 @@
+class Solution {
+public:
+    bool isMatch(string s, string p) {
+        int m = s.size(),n = p.size();
+        int match = 0, asterisk = -1, i = 0, j = 0;
+        while(i < m)
+        {
+            if(p[j] == '*')
+            {
+                match = i;
+                asterisk = j++;
+            }
+            else if( j < n && (s[i] == p[j] || p[j] == '?'))
+            {
+                i++;
+                j++;
+            }
+            else if(asterisk >= 0)  // if s[i] != p[j]
+            {
+                i = ++match;        // increment i to see if next character of s matches p[j]
+                j = asterisk + 1;   // reset j to the next character of *
+            }
+            else
+                return false;
+        }
+        while( j < n && p[j] == '*')    j++;    // if all p[j] == *, finally j should equal n
+        return j == n;
+    }
+};
