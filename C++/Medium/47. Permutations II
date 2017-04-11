@@ -1,0 +1,30 @@
+class Solution {
+public:
+    void permute(vector<int>& nums, set<vector<int>>& result,vector<int>& num,int start,vector<int>& visited)
+    {
+        if(start >= nums.size())
+            result.insert(num);
+        else
+        {
+            for(int i = 0;i < nums.size();i++)
+            {
+                if(visited[i] == 0)
+                {
+                    visited[i] = 1;
+                    num.push_back(nums[i]);
+                    permute(nums,result,num,start+1,visited);
+                    num.pop_back();
+                    visited[i] = 0;
+                }
+            }
+        }
+        
+    }
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        set<vector<int>> result;
+        vector<int> num;
+        vector<int> visited(nums.size(),0);
+        permute(nums,result,num,0,visited);
+        return vector<vector<int>> (result.begin(),result.end());
+    }
+};
