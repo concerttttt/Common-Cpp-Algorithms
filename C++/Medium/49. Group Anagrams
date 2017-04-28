@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        unordered_map<string,multiset<string>> dict;
+        for(auto str:strs)
+        {
+            string tmp = str;
+            sort(tmp.begin(),tmp.end());
+            dict[tmp].insert(str);
+        }
+        vector<vector<string>>  anagrams;
+        for(auto dct:dict)
+        {
+            vector<string> anagram(dct.second.begin(),dct.second.end());
+            anagrams.push_back(anagram);
+        }
+        return anagrams;
+    }
+};
