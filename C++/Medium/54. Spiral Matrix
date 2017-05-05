@@ -1,0 +1,28 @@
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        vector<int> res;
+        int row_size = matrix.size();
+        if(row_size == 0)   return res;
+        int col_size = matrix[0].size();
+        res.reserve(row_size * col_size);
+        //vector<int> res(row_size * col_size,0);
+        int ub = 0,rb = col_size - 1,bb = row_size - 1,lb = 0;
+        int direction = 0;
+        int row = 0,col = 0;
+        int index = 0;
+        while(ub <= bb && lb <= rb)
+        {
+            res.emplace_back(matrix[row][col]);
+            //index++;
+            switch(direction)
+            {
+                case 0:if(col >= rb){direction = 1;row += 1;ub++;} else col += 1;break;
+                case 1:if(row >= bb){direction = 2;col -= 1;rb--;} else row += 1;break;
+                case 2:if(col <= lb){direction = 3;row -= 1;bb--;} else col -= 1;break;
+                case 3:if(row <= ub){direction = 0;col += 1;lb++;} else row -= 1;break;
+            }
+        }
+        return res;
+    }
+};
