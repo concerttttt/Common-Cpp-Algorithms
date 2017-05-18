@@ -1,0 +1,29 @@
+class Solution(object):
+    def generateMatrix(self, n):
+        """
+        :type n: int
+        :rtype: List[List[int]]
+        """
+        if n == 0:return []
+        right = down = n - 1
+        left = top = 0
+        index = 1
+        res = [[0 for i in range(n)] for j in range(n)]
+        while left <= right and top <= down:
+            for i in range(left,right+1):
+                res[top][i] = index
+                index += 1;
+            top += 1
+            for j in range(top,down+1):
+                res[j][right] = index
+                index += 1
+            right -= 1
+            for i in range(right,left-1,-1):
+                res[down][i] = index
+                index += 1
+            down -= 1
+            for j in range(down,top-1,-1):
+                res[j][left] = index
+                index += 1
+            left += 1
+        return res
